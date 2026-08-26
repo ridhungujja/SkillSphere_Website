@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — SkillSphere</title>
+  <meta name="description" content="Get in touch with SkillSphere to join, partner, start a chapter, or support our mission." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../images/logo.png" />
+
+  <style>
+    .contact-hero {
+      background: var(--bg-secondary);
+      padding: 160px 0 64px;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .contact-row {
+      padding: 80px 0 100px;
+      background: #fff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 40px;
+    }
+
+    .card-header {
+      margin-bottom: 28px;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--neutral-900);
+      margin-bottom: 8px;
+    }
+
+    .card-sub {
+      color: var(--neutral-500);
+      line-height: 1.6;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--neutral-700);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--neutral-200);
+      border-radius: 12px;
+      font-size: 0.98rem;
+      font-family: var(--font-primary); /* Forces Inter font */
+      color: var(--neutral-900);
+      transition: var(--transition-fast);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-500);
+      outline: none;
+      background: #fff;
+    }
+
+    textarea { min-height: 160px; resize: vertical; }
+
+    .form-actions {
+      margin-top: 28px;
+    }
+
+    /* Info panel */
+    .info-line {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--neutral-100);
+    }
+
+    .info-line:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--neutral-500);
+      margin-bottom: 4px;
+    }
+
+    .info-value a {
+      color: var(--primary-600);
+      font-weight: 500;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .info-value a:hover {
+      color: var(--primary-700);
+    }
+
+    /* Chapter section */
+    .chapter-section {
+      background: var(--bg-secondary);
+      padding: 100px 0;
+    }
+
+    @media (max-width: 980px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled no-hero" id="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../images/logo.png" alt="SkillSphere logo" />
+        SkillSphere
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../programs/">Programs</a>
+        <a href="../team/">Meet the Team</a>
+        <a href="../news/">News</a>
+        <a href="../contact/">Contact</a>
+        <a href="../donate/" class="nav-cta">Donate</a>
+      </div>
+      <div class="nav-toggle" id="nav-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Contact Us</span>
+        <h1 class="section-title">Get in Touch</h1>
+        <p class="section-desc" style="max-width:760px;margin:0 auto;">
+          Reach out to join SkillSphere, start a chapter, partner with us, or ask any questions. We read every message.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTACT SECTION -->
+  <section class="contact-row">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Form -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Send a Message</div>
+            <div class="card-sub">Choose a topic so we can route your message to the right person faster.</div>
+          </div>
+
+          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p style="display:none;">
+              <label>Don’t fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Full Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+
+              <div class="field">
+                <label for="role">I am a...</label>
+                <select id="role" name="role" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Student</option>
+                  <option>Parent/Guardian</option>
+                  <option>Educator / Administrator</option>
+                  <option>Business / Organization</option>
+                  <option>Volunteer</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="topic">Topic</label>
+                <select id="topic" name="topic" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option>Join SkillSphere</option>
+                  <option>Start a Chapter</option>
+                  <option>Partner With Us</option>
+                  <option>Host a Donation Box</option>
+                  <option>Media / Press</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us more about what you're looking for..." required></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Contact Information</div>
+            <div class="card-sub">Official ways to reach SkillSphere.</div>
+          </div>
+
+          <div class="info-line">
+            <div class="info-label">Email</div>
+            <div class="info-value"><a href="mailto:skillsphereintl@gmail.com">skillsphereintl@gmail.com</a></div>
+          </div>
+          <div class="info-line">
+            <div class="info-label">Instagram</div>
+            <div class="info-value"><a href="https://www.instagram.com/skillsphere.intl/" target="_blank">@skillsphere.intl</a></div>
+          </div>
+          <div class="info-line">
+            <div class="info-label">Facebook</div>
+            <div class="info-value"><a href="https://www.facebook.com/skillsphereintl" target="_blank">skillsphereintl</a></div>
+          </div>
+          <div class="info-line">
+            <div class="info-label">LinkedIn</div>
+            <div class="info-value"><a href="https://www.linkedin.com/company/skillspherefoundation/" target="_blank">SkillSphere Foundation</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER SECTION -->
+  <section class="chapter-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Chapters</span>
+        <h2 class="section-title">Start a SkillSphere Chapter</h2>
+        <p class="section-desc" style="max-width:760px;margin:0 auto;">
+          Want to bring SkillSphere to your school? We’ll help you get started with curriculum, training, and support.
+        </p>
+      </div>
+
+      <div style="max-width:800px;margin:0 auto;">
+        <a href="https://forms.gle/REPLACE_WITH_YOUR_CHAPTER_FORM" target="_blank" class="btn btn-orange" style="display:inline-flex;width:100%;justify-content:center;padding:18px 32px;font-size:1.05rem;">
+          Submit Chapter Interest Form
+        </a>
+        <p style="text-align:center;margin-top:16px;color:var(--neutral-500);font-size:0.95rem;">
+          Or email us directly at <a href="mailto:skillsphereintl@gmail.com">skillsphereintl@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <img src="../images/logo.png" alt="SkillSphere" />
+            SkillSphere
+          </a>
+          <p>A student-founded nonprofit building the next generation of leaders through practical skill development, community impact, and peer-led education. Based in Delaware.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/skillsphere.intl/" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
+            <a href="https://www.facebook.com/skillsphereintl" target="_blank" rel="noopener" class="footer-social-link">Facebook</a>
+            <a href="https://www.linkedin.com/company/skillspherefoundation/" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+            <a href="mailto:skillsphereintl@gmail.com" class="footer-social-link">Email</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <a href="../index.html">Home</a>
+          <a href="../programs/">Programs</a>
+          <a href="../team/">Meet the Team</a>
+          <a href="../news/">News</a>
+          <a href="../contact/">Contact</a>
+          <a href="../donate/">Donate</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get Involved</h4>
+          <a href="../contact/">Join the Team</a>
+          <a href="../contact/">Start a Chapter</a>
+          <a href="../donate/">Donate</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:skillsphereintl@gmail.com">skillsphereintl@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 SkillSphere International. All rights reserved.</p>
+        <div>
+          <a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

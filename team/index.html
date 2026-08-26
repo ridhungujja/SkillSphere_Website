@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meet the Team — SkillSphere</title>
+  <meta name="description" content="Meet the students behind SkillSphere — a student-founded nonprofit building the next generation of leaders." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../images/logo.png" />
+
+  <style>
+    /* ===== Team page palette hooks ===== */
+    :root {
+      --team-line: var(--primary-500);
+      --team-topbar: var(--primary-500);
+      --team-accent: var(--accent-500);
+      --team-card-border: #e9eef6;
+      --team-card-shadow: 0 8px 20px rgba(2, 6, 23, 0.06);
+      --team-card-shadow-hover: 0 22px 55px rgba(2, 6, 23, 0.12);
+    }
+
+    /* ===== Hero ===== */
+    .team-hero {
+      position: relative;
+      padding: 152px 0 104px;
+      background: #0a1628;
+      overflow: hidden;
+    }
+    .team-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(180deg, rgba(2,6,23,0.58) 0%, rgba(2,6,23,0.80) 100%),
+        url("https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=1800&h=1000&fit=crop");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .team-hero .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .team-hero-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.7rem, 5vw, 3.7rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .team-hero-desc {
+      max-width: 860px;
+      margin: 0 auto;
+      color: rgba(255,255,255,0.76);
+      font-size: 1.06rem;
+      line-height: 1.9;
+    }
+
+    /* ===== Main wrap ===== */
+    .team-wrap {
+      background: #ffffff;
+      padding: 96px 0 120px;
+    }
+
+    /* ===== Grid ===== */
+    .team-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 46px;
+      row-gap: 96px;
+    }
+
+    /* ===== FIX: Flexbox for Centered Row with Matched Widths ===== */
+    .team-grid--center-row {
+      max-width: 1100px;
+      margin: 96px auto 0;
+      display: flex;             /* Use Flexbox */
+      justify-content: center;   /* Center the group */
+      gap: 46px;                 /* Match grid gap */
+    }
+
+    /* Force cards in this row to match the grid column width exactly */
+    .team-grid--center-row .member-card {
+      width: calc((100% - 92px) / 3); /* Exact calculation for 3 columns with 2 gaps */
+      max-width: 336px;               /* Fallback max-width */
+      flex-shrink: 0;                 /* Prevent shrinking */
+    }
+
+    /* ===== Card ===== */
+    .member-card {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--team-card-border);
+      border-radius: 8px;
+      box-shadow: var(--team-card-shadow);
+      padding: 104px 28px 34px;
+      text-align: center;
+      transition: var(--transition-base);
+    }
+
+    .member-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--team-card-shadow-hover);
+      border-color: rgba(37, 99, 235, 0.18);
+    }
+
+    .member-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 6px;
+      background: var(--team-topbar);
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      opacity: 0.95;
+    }
+
+    /* ===== Photo badge ===== */
+    .photo-rail {
+      position: absolute;
+      top: -70px;
+      left: 0;
+      right: 0;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .photo-rail::before,
+    .photo-rail::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      height: 3px;
+      width: calc(50% - 98px);
+      background: var(--team-line);
+      opacity: 0.65;
+    }
+    .photo-rail::before { left: 0; }
+    .photo-rail::after  { right: 0; }
+
+    .photo-badge {
+      width: 148px;
+      height: 148px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 10px solid #fff;
+      background: #fff;
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.16);
+      pointer-events: auto;
+    }
+
+    .photo-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #fff;
+    }
+
+    /* ===== Typography ===== */
+    .member-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: var(--neutral-900);
+      margin: 4px 0 10px;
+    }
+
+    .member-role {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: #8a94a6;
+      margin-bottom: 14px;
+    }
+
+    .member-divider {
+      width: 56px;
+      height: 3px;
+      background: var(--team-accent);
+      border-radius: 999px;
+      margin: 0 auto 16px;
+      opacity: 0.9;
+    }
+
+    .member-bio {
+      font-size: 0.86rem;
+      line-height: 1.78;
+      color: var(--neutral-600);
+      text-align: left;
+      white-space: pre-line;
+    }
+
+    /* ===== Former members ===== */
+    .former-wrap {
+      max-width: 1100px;
+      margin: 98px auto 0;
+      padding-top: 86px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .former-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.38rem;
+      color: var(--neutral-900);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .former-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 46px;
+      row-gap: 46px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .former-grid.single-center {
+      grid-template-columns: 1fr;
+      max-width: 380px;
+    }
+
+    .former-card {
+      background: #fff;
+      border: 1px solid var(--team-card-border);
+      border-radius: 8px;
+      box-shadow: var(--team-card-shadow);
+      padding: 36px 18px;
+      text-align: center;
+      transition: var(--transition-base);
+      position: relative;
+      min-height: 128px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .former-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 6px;
+      background: var(--team-topbar);
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      opacity: 0.95;
+    }
+
+    .former-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--team-card-shadow-hover);
+      border-color: rgba(37, 99, 235, 0.18);
+    }
+
+    .former-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: var(--neutral-900);
+      margin-bottom: 10px;
+    }
+
+    .former-role {
+      font-size: 0.95rem;
+      color: #8a94a6;
+      font-weight: 500;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 34px;
+        row-gap: 92px;
+      }
+      /* Match tablet grid behavior for centered row */
+      .team-grid--center-row {
+        gap: 34px;
+        /* If 2 items fit on tablet, they will just fill the row normally */
+      }
+      .team-grid--center-row .member-card {
+        width: calc((100% - 34px) / 2); /* Match 2-column width */
+        max-width: none;
+      }
+      .former-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 34px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+        row-gap: 92px;
+      }
+      .team-grid--center-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .team-grid--center-row .member-card {
+        width: 100%;
+      }
+      .former-grid {
+        grid-template-columns: 1fr;
+      }
+      .photo-rail::before,
+      .photo-rail::after {
+        width: calc(50% - 92px);
+      }
+      .member-card {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../images/logo.png" alt="SkillSphere logo" />
+        SkillSphere
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../programs/">Programs</a>
+        <a href="../team/">Meet the Team</a>
+        <a href="../news/">News</a>
+        <a href="../contact/">Contact</a>
+        <a href="../donate/" class="nav-cta">Donate</a>
+      </div>
+      <div class="nav-toggle" id="nav-toggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="team-hero">
+    <div class="team-hero-bg"></div>
+    <div class="container">
+      <h1 class="team-hero-title">Meet the Team</h1>
+      <p class="team-hero-desc">
+        SkillSphere is built and run by students. The people below are the reason our workshops happen, our supply drive operates, and our chapter model is ready to grow.
+      </p>
+    </div>
+  </header>
+
+  <!-- TEAM -->
+  <main class="team-wrap">
+    <div class="container">
+      <section class="team-grid">
+
+        <!-- Row 1 -->
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Ridhun Gujja" />
+            </div>
+          </div>
+          <div class="member-name">Ridhun Gujja</div>
+          <div class="member-role">Cofounder / Co-President</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hello! My name is Ridhun Gujja, and I am a freshman at the Charter School of Wilmington. Outside of SkillSphere, I am involved in BPA, Debate, Model UN, Youth in Government, and varsity Crew. In my free time, I enjoy playing badminton, cooking, and spending time with friends and family. In the future, my goal for SkillSphere is to combine STEM and business thinking by creating opportunities for students to build practical, real-world skills early on, and grow access to our free resources nationwide!</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Devkrishna Manappattu" />
+            </div>
+          </div>
+          <div class="member-name">Devkrishna Manappattu</div>
+          <div class="member-role">Cofounder / Co-President</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Devkrishna Manappattu, and I am junior at Appoquinuimink High School. Some of my interests include photography, cooking, listening to music, and playing volleyball. As a student who is deeply involved in business-related activities, I quickly became passionate and committed to creating an accessible business curriculum for youth. In the future, I hope to grow SkillSphere further to inspire and provide equitable resources for my community!</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Nirmal Praveen" />
+            </div>
+          </div>
+          <div class="member-name">Nirmal Praveen</div>
+          <div class="member-role">Technical Director</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Nirmal Praveen, and I'm currently a freshman at the Charter School of Wilmington. I found my passion for technology in middle school through my involvement in the Business Professionals of America. I’m also involved in Karate, where I help volunteer and work with younger kids. I’m interested in robotics and enjoy learning more about how technology can be applied in real-world situations. In my free time, I like to work out and hang out with friends. I wanted to found SkillSphere to give more students the same opportunities I had.</div>
+        </article>
+
+        <!-- Row 2 -->
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Nandana Padmaraj" />
+            </div>
+          </div>
+          <div class="member-name">Nandana Padmaraj</div>
+          <div class="member-role">Director of Operations</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Nandana Padmaraj, I am a junior at Garnet Valley, and I am looking to go into Data Analytics and MIS. I am involved in many clubs, including FBLA and TSA, as well as having the opportunity to hold multiple treasury positions to pursue my interests. Furthermore, I have a couple of ongoing investment research projects, and I love to volunteer and support my community. In the future, I am excited to expand Skillsphere as well as take my learning to a professional level.</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Yashas Chittimalla" />
+            </div>
+          </div>
+          <div class="member-name">Yashas Chittimalla</div>
+          <div class="member-role">Treasurer</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hey, everyone! I'm Yashas Chittimalla, and I'm currently a freshman at Newark Charter High School. Apart from Skillsphere, I'm involved in BPA, TSA, Student Council, Math League, and my school's Varsity Tennis team. I'm interested in tech, business, and finance, which is why I'm so passionate about SkillSphere. I love participating in competitions and investing in the market, and I'm always looking for new ways to learn and improve. In my free time, I play tennis and pickleball; watch football;  and bake cookies.</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Rayya Karim" />
+            </div>
+          </div>
+          <div class="member-name">Rayya Karim</div>
+          <div class="member-role">Secretary</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Rayya Karim, and I am a junior at MOT Charter. I am involved in BPA, VEX Robotics, TSA, and more. I also work as a math tutor and enjoy watching movies, listening to music, and dancing. I am passionate about advancing different fields through tech, and hope to be either a Biomechanical, Chemical, or Mechanical Engineer!</div>
+        </article>
+
+        <!-- Row 3 -->
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Nikita Iyer" />
+            </div>
+          </div>
+          <div class="member-name">Nikita Iyer</div>
+          <div class="member-role">Fundraising Director</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Nikita Iyer, and I am a junior at Charter School of Wilmington. I am involved in various clubs and organizations, and I am passionate about giving back to my community. I love to volunteer and participate in events that make a difference.</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Yutika Kedia" />
+            </div>
+          </div>
+          <div class="member-name">Yutika Kedia</div>
+          <div class="member-role">Editor-in-Chief</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Yutika Kedia and I am a Junior at Middletown High School.</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Hareeth Dhayanandh" />
+            </div>
+          </div>
+          <div class="member-name">Hareeth Dhayanandh</div>
+          <div class="member-role">Marketing Director</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">I'm Hareeth Dhayanandh, a sophomore at MOT Charter High School with a strong interest in business and leadership. I'm a state champion in speech and debate and serve as president of my school’s debate club, where I help lead and prepare students for competition. I'm also the Parliamentarian for my BPA chapter, contributing to organization and leadership within the team. Alongside my school activities, I run an online business, which has helped me build real-world skills in entrepreneurship and decision-making. I'm focused on continuing to grow as a leader and pursuing business at a top college.</div>
+        </article>
+
+        <!-- Row 4 -->
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Aneesh Danduri" />
+            </div>
+          </div>
+          <div class="member-name">Aneesh Danduri</div>
+          <div class="member-role">Social Media Manager</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Aneesh Danduri, and I am a sophomore at Appoquinimink High School. I am passionate about social media and marketing, and I enjoy creating engaging content for various platforms.</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Akhil Gajula" />
+            </div>
+          </div>
+          <div class="member-name">Akhil Gajula</div>
+          <div class="member-role">Outreach Coordinator</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Akhil Gajula, and I am a junior at MOT Charter School. I am passionate about outreach and community engagement, and I enjoy working with diverse groups of people to create meaningful connections.</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Ketaki Paranjape" />
+            </div>
+          </div>
+          <div class="member-name">Ketaki Paranjape</div>
+          <div class="member-role">Outreach Coordinator</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Ketaki Paranjape, and I am a sophomore at Charter School of Wilmington.</div>
+        </article>
+
+        <!-- Row 5 -->
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Evina Shingavi" />
+            </div>
+          </div>
+          <div class="member-name">Evina Shingavi</div>
+          <div class="member-role">STEM Mentor</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Evina Shingavi, and I am a freshman at MOT Charter School.</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Neil Virani" />
+            </div>
+          </div>
+          <div class="member-name">Neil Virani</div>
+          <div class="member-role">STEM Mentor</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hello! My name is Neil Virani, and I am a freshman at Appoquinimink High School. Some of my hobbies are swimming, running, and coding. Outside of skillsphere, I'm involved in BPA, TSA, Math League, VEX Robotics, Student Government, and varsity swim. I am very interested in tech and finance, which is why the SkillSphere Foundation means so much to me. As a student who is involved in technology, my goal is to create equal access to learning resources online for everyone!</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Vishnu Mysore" />
+            </div>
+          </div>
+          <div class="member-name">Vishnu Mysore</div>
+          <div class="member-role">STEM Mentor</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Vishnu Mysore and I am a Junior at Appoquinimink High School.</div>
+        </article>
+
+      </section>
+
+      <!-- Row 6: Centered Row of 2 (Flexbox with Width Match) -->
+      <section class="team-grid--center-row">
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Saivikas Gudipati" />
+            </div>
+          </div>
+          <div class="member-name">Saivikas Gudipati</div>
+          <div class="member-role">Fundraising Coordinator</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hello, my name is Saivikas Gudipati, and I'm currently a sophomore at the Charter School of Wilmington. Outside of Skillsphere, I'm involved in BPA, Odyssey of the Mind, NASA Tech-Rise, and FTC Robotics. I'm interested in tech and finance, which is why I'm so passionate about Skillsphere. I enjoy participating in competitions, challenging myself, and volunteering within the community. In my free time, I volunteer at various locations and enjoy hosting fundraisers for a good cause.</div>
+        </article>
+
+        <article class="member-card">
+          <div class="photo-rail">
+            <div class="photo-badge">
+              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Sri Vayuvegula" />
+            </div>
+          </div>
+          <div class="member-name">Sri Vayuvegula</div>
+          <div class="member-role">Workshop Coordinator</div>
+          <div class="member-divider"></div>
+          <div class="member-bio">Hi! My name is Sri Vayuvegula, and I am a freshman at Charter School of Wilmington. I am involved in BPA, FTC Robotics, and nonprofit organizations like SkillSphere, Helios Care Foundation, and CureQuest. I am also a varsity volleyball player and enjoy cricket, pickleball, and listening to music. I am passionate about using technology to create innovative solutions that positively impact communities, and in the future, I hope to become a robotics engineer!</div>
+        </article>
+      </section>
+
+      <!-- Former members -->
+      <section class="former-wrap">
+        <div class="former-title">Former Members</div>
+        <div class="former-grid single-center">
+          <div class="former-card">
+            <div class="former-name">John Atluri</div>
+            <div class="former-role">Former Social Media Manager</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <img src="../images/logo.png" alt="SkillSphere" />
+            SkillSphere
+          </a>
+          <p>A student-founded nonprofit building the next generation of leaders through practical skill development, community impact, and peer-led education. Based in Delaware.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/skillsphere.intl/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/skillsphereintl" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/skillspherefoundation/" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="mailto:skillsphereintl@gmail.com" class="footer-social-link" aria-label="Email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <a href="../index.html">Home</a>
+          <a href="../programs/">Programs</a>
+          <a href="../team/">Meet the Team</a>
+          <a href="../news/">News</a>
+          <a href="../contact/">Contact</a>
+          <a href="../donate/">Donate</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get Involved</h4>
+          <a href="../contact/">Join SkillSphere</a>
+          <a href="../contact/">Start a Chapter</a>
+          <a href="../donate/">Donate</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:skillsphereintl@gmail.com">skillsphereintl@gmail.com</a>
+          <a href="https://www.instagram.com/skillsphere.intl/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/skillsphereintl" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.linkedin.com/company/skillspherefoundation/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 SkillSphere International. All rights reserved.</p>
+        <div>
+          <a href="#">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
