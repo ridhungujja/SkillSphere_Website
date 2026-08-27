@@ -75,22 +75,6 @@
       row-gap: 96px;
     }
 
-    /* ===== FIX: Flexbox for Centered Row with Matched Widths ===== */
-    .team-grid--center-row {
-      max-width: 1100px;
-      margin: 96px auto 0;
-      display: flex;             /* Use Flexbox */
-      justify-content: center;   /* Center the group */
-      gap: 46px;                 /* Match grid gap */
-    }
-
-    /* Force cards in this row to match the grid column width exactly */
-    .team-grid--center-row .member-card {
-      width: calc((100% - 92px) / 3); /* Exact calculation for 3 columns with 2 gaps */
-      max-width: 336px;               /* Fallback max-width */
-      flex-shrink: 0;                 /* Prevent shrinking */
-    }
-
     /* ===== Card ===== */
     .member-card {
       position: relative;
@@ -284,18 +268,12 @@
         column-gap: 34px;
         row-gap: 92px;
       }
-      /* Match tablet grid behavior for centered row */
-      .team-grid--center-row {
-        gap: 34px;
-        /* If 2 items fit on tablet, they will just fill the row normally */
-      }
-      .team-grid--center-row .member-card {
-        width: calc((100% - 34px) / 2); /* Match 2-column width */
-        max-width: none;
-      }
       .former-grid {
-        grid-template-columns: repeat(2, 1fr);
         column-gap: 34px;
+      }
+      .former-grid .former-card {
+        width: calc((100% - 34px) / 2);
+        max-width: none;
       }
     }
 
@@ -304,15 +282,8 @@
         grid-template-columns: 1fr;
         row-gap: 92px;
       }
-      .team-grid--center-row {
-        flex-direction: column;
-        align-items: center;
-      }
-      .team-grid--center-row .member-card {
+      .former-grid .former-card {
         width: 100%;
-      }
-      .former-grid {
-        grid-template-columns: 1fr;
       }
       .photo-rail::before,
       .photo-rail::after {
@@ -469,17 +440,6 @@
         </article>
 
         <!-- Row 4 -->
-        <article class="member-card">
-          <div class="photo-rail">
-            <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Aneesh Danduri" />
-            </div>
-          </div>
-          <div class="member-name">Aneesh Danduri</div>
-          <div class="member-role">Social Media Manager</div>
-          <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Aneesh Danduri, and I am a sophomore at Appoquinimink High School. I am passionate about social media and marketing, and I enjoy creating engaging content for various platforms.</div>
-        </article>
 
         <article class="member-card">
           <div class="photo-rail">
@@ -542,22 +502,6 @@
           <div class="member-bio">Hello! My name is Vishnu Mysore, and I am a senior at Appoquinimink. At SkillSphere, I serve as a Curriculum Developer, where I design workshop content focused on teaching practical skills in coding, finance, and problem solving. I am passionate about making learning engaging and applicable to real world situations. In my free time, I enjoy programming, playing soccer, and exploring new technologies.</div>
         </article>
 
-      </section>
-
-      <!-- Row 6: Centered Row of 2 (Flexbox with Width Match) -->
-      <section class="team-grid--center-row">
-        <article class="member-card">
-          <div class="photo-rail">
-            <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Saivikas Gudipati" />
-            </div>
-          </div>
-          <div class="member-name">Saivikas Gudipati</div>
-          <div class="member-role">Fundraising Coordinator</div>
-          <div class="member-divider"></div>
-          <div class="member-bio">Hello, my name is Saivikas Gudipati, and I'm currently a sophomore at the Charter School of Wilmington. Outside of Skillsphere, I'm involved in BPA, Odyssey of the Mind, NASA Tech-Rise, and FTC Robotics. I'm interested in tech and finance, which is why I'm so passionate about Skillsphere. I enjoy participating in competitions, challenging myself, and volunteering within the community. In my free time, I volunteer at various locations and enjoy hosting fundraisers for a good cause.</div>
-        </article>
-
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
@@ -572,7 +516,9 @@
           <div class="member-divider"></div>
           <div class="member-bio">Hi! My name is Sri Vayuvegula, and I am a freshman at Charter School of Wilmington. I am involved in BPA, FTC Robotics, and nonprofit organizations like SkillSphere, Helios Care Foundation, and CureQuest. I am also a varsity volleyball player and enjoy cricket, pickleball, and listening to music. I am passionate about using technology to create innovative solutions that positively impact communities, and in the future, I hope to become a robotics engineer!</div>
         </article>
+
       </section>
+
 
       <!-- Former members -->
       <section class="former-wrap">
@@ -593,6 +539,14 @@
           <div class="former-card">
             <div class="former-name">Ketaki Paranjape</div>
             <div class="former-role">Former Outreach Coordinator</div>
+          </div>
+          <div class="former-card">
+            <div class="former-name">Aneesh Danduri</div>
+            <div class="former-role">Former Social Media Manager</div>
+          </div>
+          <div class="former-card">
+            <div class="former-name">Saivikas Gudipati</div>
+            <div class="former-role">Former Fundraising Coordinator</div>
           </div>
         </div>
       </section>
