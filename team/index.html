@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meet the Team — SkillSphere</title>
   <meta name="description" content="Meet the students behind SkillSphere — a student-founded nonprofit building the next generation of leaders." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="icon" href="../images/logo.png" />
 
@@ -75,22 +78,6 @@
       row-gap: 96px;
     }
 
-    /* ===== FIX: Flexbox for Centered Row with Matched Widths ===== */
-    .team-grid--center-row {
-      max-width: 1100px;
-      margin: 96px auto 0;
-      display: flex;             /* Use Flexbox */
-      justify-content: center;   /* Center the group */
-      gap: 46px;                 /* Match grid gap */
-    }
-
-    /* Force cards in this row to match the grid column width exactly */
-    .team-grid--center-row .member-card {
-      width: calc((100% - 92px) / 3); /* Exact calculation for 3 columns with 2 gaps */
-      max-width: 336px;               /* Fallback max-width */
-      flex-shrink: 0;                 /* Prevent shrinking */
-    }
-
     /* ===== Card ===== */
     .member-card {
       position: relative;
@@ -100,7 +87,7 @@
       box-shadow: var(--team-card-shadow);
       padding: 104px 28px 34px;
       text-align: center;
-      transition: var(--transition-base);
+      transition: var(--transition);
     }
 
     .member-card:hover {
@@ -216,17 +203,19 @@
     }
 
     .former-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       column-gap: 46px;
       row-gap: 46px;
       max-width: 1100px;
       margin: 0 auto;
     }
 
-    .former-grid.single-center {
-      grid-template-columns: 1fr;
-      max-width: 380px;
+    .former-grid .former-card {
+      width: calc((100% - 92px) / 3);
+      max-width: 336px;
+      flex-shrink: 0;
     }
 
     .former-card {
@@ -236,7 +225,7 @@
       box-shadow: var(--team-card-shadow);
       padding: 36px 18px;
       text-align: center;
-      transition: var(--transition-base);
+      transition: var(--transition);
       position: relative;
       min-height: 128px;
       display: flex;
@@ -282,18 +271,12 @@
         column-gap: 34px;
         row-gap: 92px;
       }
-      /* Match tablet grid behavior for centered row */
-      .team-grid--center-row {
-        gap: 34px;
-        /* If 2 items fit on tablet, they will just fill the row normally */
-      }
-      .team-grid--center-row .member-card {
-        width: calc((100% - 34px) / 2); /* Match 2-column width */
-        max-width: none;
-      }
       .former-grid {
-        grid-template-columns: repeat(2, 1fr);
         column-gap: 34px;
+      }
+      .former-grid .former-card {
+        width: calc((100% - 34px) / 2);
+        max-width: none;
       }
     }
 
@@ -302,15 +285,8 @@
         grid-template-columns: 1fr;
         row-gap: 92px;
       }
-      .team-grid--center-row {
-        flex-direction: column;
-        align-items: center;
-      }
-      .team-grid--center-row .member-card {
+      .former-grid .former-card {
         width: 100%;
-      }
-      .former-grid {
-        grid-template-columns: 1fr;
       }
       .photo-rail::before,
       .photo-rail::after {
@@ -324,6 +300,8 @@
   </style>
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="container">
@@ -357,7 +335,7 @@
   </header>
 
   <!-- TEAM -->
-  <main class="team-wrap">
+  <main id="main" class="team-wrap">
     <div class="container">
       <section class="team-grid">
 
@@ -365,223 +343,218 @@
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Ridhun Gujja" />
+              <img src="../images/team/ridhun-gujja-400.webp"
+                   srcset="../images/team/ridhun-gujja-400.webp 400w, ../images/team/ridhun-gujja-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Ridhun Gujja" />
             </div>
           </div>
           <div class="member-name">Ridhun Gujja</div>
           <div class="member-role">Cofounder / Co-President</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hello! My name is Ridhun Gujja, and I am a freshman at the Charter School of Wilmington. Outside of SkillSphere, I am involved in BPA, Debate, Model UN, Youth in Government, and varsity Crew. In my free time, I enjoy playing badminton, cooking, and spending time with friends and family. In the future, my goal for SkillSphere is to combine STEM and business thinking by creating opportunities for students to build practical, real-world skills early on, and grow access to our free resources nationwide!</div>
+          <div class="member-bio">Hi! My name’s Ridhun Gujja, and I am a sophomore at the Charter School of Wilmington. Outside of SkillSphere, I am involved in BPA, Debate, MUN, YIG, my school newspaper and I row for my school’s crew team. In my free time, I enjoy playing badminton, cooking, and spending time with friends. In the future, my goal for SkillSphere is to combine both STEM and business thinking by creating opportunities for students to build practical, real-world skills early on, and grow access to our free resources nationwide!</div>
         </article>
 
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Devkrishna Manappattu" />
+              <img src="../images/team/devkrishna-mannapattu-400.webp"
+                   srcset="../images/team/devkrishna-mannapattu-400.webp 400w, ../images/team/devkrishna-mannapattu-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Devkrishna Manappattu" />
             </div>
           </div>
           <div class="member-name">Devkrishna Manappattu</div>
           <div class="member-role">Cofounder / Co-President</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Devkrishna Manappattu, and I am junior at Appoquinuimink High School. Some of my interests include photography, cooking, listening to music, and playing volleyball. As a student who is deeply involved in business-related activities, I quickly became passionate and committed to creating an accessible business curriculum for youth. In the future, I hope to grow SkillSphere further to inspire and provide equitable resources for my community!</div>
-        </article>
-
-        <article class="member-card">
-          <div class="photo-rail">
-            <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Nirmal Praveen" />
-            </div>
-          </div>
-          <div class="member-name">Nirmal Praveen</div>
-          <div class="member-role">Technical Director</div>
-          <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Nirmal Praveen, and I'm currently a freshman at the Charter School of Wilmington. I found my passion for technology in middle school through my involvement in the Business Professionals of America. I’m also involved in Karate, where I help volunteer and work with younger kids. I’m interested in robotics and enjoy learning more about how technology can be applied in real-world situations. In my free time, I like to work out and hang out with friends. I wanted to found SkillSphere to give more students the same opportunities I had.</div>
+          <div class="member-bio">Hi! My name is Devkrishna Manappattu, and I am senior at Appoquinuimink High School. Some of my interests include photography, cooking, listening to music, and playing volleyball. As a student who is deeply involved in business-related activities, I quickly became passionate and committed to creating an accessible business curriculum for youth. In the future, I hope to grow SkillSphere further to inspire and provide equitable resources for my community!</div>
         </article>
 
         <!-- Row 2 -->
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Nandana Padmaraj" />
+              <img src="../images/team/nandana-padmaraj-400.webp"
+                   srcset="../images/team/nandana-padmaraj-400.webp 400w, ../images/team/nandana-padmaraj-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Nandana Padmaraj" />
             </div>
           </div>
           <div class="member-name">Nandana Padmaraj</div>
           <div class="member-role">Director of Operations</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Nandana Padmaraj, I am a junior at Garnet Valley, and I am looking to go into Data Analytics and MIS. I am involved in many clubs, including FBLA and TSA, as well as having the opportunity to hold multiple treasury positions to pursue my interests. Furthermore, I have a couple of ongoing investment research projects, and I love to volunteer and support my community. In the future, I am excited to expand Skillsphere as well as take my learning to a professional level.</div>
+          <div class="member-bio">Hi! My name is Nandana Padmaraj, I am a senior at Garnet Valley, and I am looking to go into Data Analytics and MIS. I am involved in many clubs, including FBLA and TSA, as well as having the opportunity to hold multiple treasury positions to pursue my interests. Furthermore, I have a couple of ongoing investment research projects, and I love to volunteer and support my community. In the future, I am excited to expand Skillsphere as well as take my learning to a professional level.</div>
         </article>
 
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Yashas Chittimalla" />
+              <img src="../images/team/yashas-chittimalla-400.webp"
+                   srcset="../images/team/yashas-chittimalla-400.webp 400w, ../images/team/yashas-chittimalla-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Yashas Chittimalla" />
             </div>
           </div>
           <div class="member-name">Yashas Chittimalla</div>
-          <div class="member-role">Treasurer</div>
+          <div class="member-role">Cofounder / Treasurer</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hey, everyone! I'm Yashas Chittimalla, and I'm currently a freshman at Newark Charter High School. Apart from Skillsphere, I'm involved in BPA, TSA, Student Council, Math League, and my school's Varsity Tennis team. I'm interested in tech, business, and finance, which is why I'm so passionate about SkillSphere. I love participating in competitions and investing in the market, and I'm always looking for new ways to learn and improve. In my free time, I play tennis and pickleball; watch football;  and bake cookies.</div>
-        </article>
-
-        <article class="member-card">
-          <div class="photo-rail">
-            <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Rayya Karim" />
-            </div>
-          </div>
-          <div class="member-name">Rayya Karim</div>
-          <div class="member-role">Secretary</div>
-          <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Rayya Karim, and I am a junior at MOT Charter. I am involved in BPA, VEX Robotics, TSA, and more. I also work as a math tutor and enjoy watching movies, listening to music, and dancing. I am passionate about advancing different fields through tech, and hope to be either a Biomechanical, Chemical, or Mechanical Engineer!</div>
+          <div class="member-bio">Hey, everyone! I'm Yashas Chittimalla, and I'm currently a sophomore at Newark Charter High School. Apart from Skillsphere, I'm involved in BPA, TSA, Student Council, Math League, and my school's Varsity Tennis team. I'm interested in tech, business, and finance, which is why I'm so passionate about SkillSphere. I love participating in competitions and investing in the market, and I'm always looking for new ways to learn and improve. In my free time, I play tennis and pickleball; watch football;  and bake cookies.</div>
         </article>
 
         <!-- Row 3 -->
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Nikita Iyer" />
+              <img src="../images/team/nikita-iyer-400.webp"
+                   srcset="../images/team/nikita-iyer-400.webp 400w, ../images/team/nikita-iyer-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Nikita Iyer" />
             </div>
           </div>
           <div class="member-name">Nikita Iyer</div>
           <div class="member-role">Fundraising Director</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Nikita Iyer, and I am a junior at Charter School of Wilmington. I am involved in various clubs and organizations, and I am passionate about giving back to my community. I love to volunteer and participate in events that make a difference.</div>
+          <div class="member-bio">Hi! My name is Nikita Iyer, and I am a senior at Charter School of Wilmington. I am involved in various clubs and organizations, and I am passionate about giving back to my community. I love to volunteer and participate in events that make a difference.</div>
         </article>
 
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Yutika Kedia" />
+              <img src="../images/team/yutika-kedia-400.webp"
+                   srcset="../images/team/yutika-kedia-400.webp 400w, ../images/team/yutika-kedia-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Yutika Kedia" />
             </div>
           </div>
           <div class="member-name">Yutika Kedia</div>
           <div class="member-role">Editor-in-Chief</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Yutika Kedia and I am a Junior at Middletown High School.</div>
+          <div class="member-bio">Hi! My name is Yutika Kedia and I am a senior at Middletown High school. As a part of the Outreach team, I focus on building partnerships and strengthening Skillsphere’s connections within the community. I enjoy building these relationships because I get a chance to expand our network and bring valuable opportunities to students. Outside of Skillsphere, I am involved in BPA, dance, and lacrosse. In my free time, I love hanging out with my friends, reading, traveling, and trying new foods!</div>
         </article>
 
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Hareeth Dhayanandh" />
+              <img src="../images/team/hareeth-400.webp"
+                   srcset="../images/team/hareeth-400.webp 400w, ../images/team/hareeth-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Hareeth Dhayanandh" />
             </div>
           </div>
           <div class="member-name">Hareeth Dhayanandh</div>
           <div class="member-role">Marketing Director</div>
           <div class="member-divider"></div>
-          <div class="member-bio">I'm Hareeth Dhayanandh, a sophomore at MOT Charter High School with a strong interest in business and leadership. I'm a state champion in speech and debate and serve as president of my school’s debate club, where I help lead and prepare students for competition. I'm also the Parliamentarian for my BPA chapter, contributing to organization and leadership within the team. Alongside my school activities, I run an online business, which has helped me build real-world skills in entrepreneurship and decision-making. I'm focused on continuing to grow as a leader and pursuing business at a top college.</div>
+          <div class="member-bio">I'm Hareeth Dhayanandh, a junior at MOT Charter High School with a strong interest in business and leadership. I'm a state champion in speech and debate and serve as president of my school’s debate club, where I help lead and prepare students for competition. I'm also the Parliamentarian for my BPA chapter, contributing to organization and leadership within the team. Alongside my school activities, I run an online business and I'm focused on continuing to grow as a leader and pursuing business.</div>
         </article>
 
         <!-- Row 4 -->
-        <article class="member-card">
-          <div class="photo-rail">
-            <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Aneesh Danduri" />
-            </div>
-          </div>
-          <div class="member-name">Aneesh Danduri</div>
-          <div class="member-role">Social Media Manager</div>
-          <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Aneesh Danduri, and I am a sophomore at Appoquinimink High School. I am passionate about social media and marketing, and I enjoy creating engaging content for various platforms.</div>
-        </article>
 
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Akhil Gajula" />
+              <img src="../images/team/akhil-gajula-400.webp"
+                   srcset="../images/team/akhil-gajula-400.webp 400w, ../images/team/akhil-gajula-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Akhil Gajula" />
             </div>
           </div>
           <div class="member-name">Akhil Gajula</div>
           <div class="member-role">Outreach Coordinator</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Akhil Gajula, and I am a junior at MOT Charter School. I am passionate about outreach and community engagement, and I enjoy working with diverse groups of people to create meaningful connections.</div>
-        </article>
-
-        <article class="member-card">
-          <div class="photo-rail">
-            <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Ketaki Paranjape" />
-            </div>
-          </div>
-          <div class="member-name">Ketaki Paranjape</div>
-          <div class="member-role">Outreach Coordinator</div>
-          <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Ketaki Paranjape, and I am a sophomore at Charter School of Wilmington.</div>
+          <div class="member-bio">Hi! My name is Akhil Gajula, and I am a senior at MOT Charter School. I am passionate about outreach and community engagement, and I enjoy working with diverse groups of people to create meaningful connections.</div>
         </article>
 
         <!-- Row 5 -->
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Evina Shingavi" />
+              <img src="../images/team/evina-shingavi-400.webp"
+                   srcset="../images/team/evina-shingavi-400.webp 400w, ../images/team/evina-shingavi-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Evina Shingavi" />
             </div>
           </div>
           <div class="member-name">Evina Shingavi</div>
           <div class="member-role">STEM Mentor</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Evina Shingavi, and I am a freshman at MOT Charter School.</div>
+          <div class="member-bio">Hi! My name is Evina Shingavi, and I am a sophomore at MOT Charter School.</div>
         </article>
 
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Neil Virani" />
+              <img src="../images/team/neil-virani-400.webp"
+                   srcset="../images/team/neil-virani-400.webp 400w, ../images/team/neil-virani-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Neil Virani" />
             </div>
           </div>
           <div class="member-name">Neil Virani</div>
           <div class="member-role">STEM Mentor</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hello! My name is Neil Virani, and I am a freshman at Appoquinimink High School. Some of my hobbies are swimming, running, and coding. Outside of skillsphere, I'm involved in BPA, TSA, Math League, VEX Robotics, Student Government, and varsity swim. I am very interested in tech and finance, which is why the SkillSphere Foundation means so much to me. As a student who is involved in technology, my goal is to create equal access to learning resources online for everyone!</div>
+          <div class="member-bio">Hello! My name is Neil Virani, and I am a sophomore at Appoquinimink High School. Some of my hobbies are swimming, running, and coding. Outside of skillsphere, I'm involved in BPA, TSA, Math League, VEX Robotics, Student Government, and varsity swim. I am very interested in tech and finance, which is why the SkillSphere Foundation means so much to me. As a student who is involved in technology, my goal is to create equal access to learning resources online for everyone!</div>
         </article>
 
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Vishnu Mysore" />
+              <img src="../images/team/vishnu-mysore-400.webp"
+                   srcset="../images/team/vishnu-mysore-400.webp 400w, ../images/team/vishnu-mysore-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Vishnu Mysore" />
             </div>
           </div>
           <div class="member-name">Vishnu Mysore</div>
-          <div class="member-role">STEM Mentor</div>
+          <div class="member-role">Curriculum Developer</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Vishnu Mysore and I am a Junior at Appoquinimink High School.</div>
-        </article>
-
-      </section>
-
-      <!-- Row 6: Centered Row of 2 (Flexbox with Width Match) -->
-      <section class="team-grid--center-row">
-        <article class="member-card">
-          <div class="photo-rail">
-            <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Saivikas Gudipati" />
-            </div>
-          </div>
-          <div class="member-name">Saivikas Gudipati</div>
-          <div class="member-role">Fundraising Coordinator</div>
-          <div class="member-divider"></div>
-          <div class="member-bio">Hello, my name is Saivikas Gudipati, and I'm currently a sophomore at the Charter School of Wilmington. Outside of Skillsphere, I'm involved in BPA, Odyssey of the Mind, NASA Tech-Rise, and FTC Robotics. I'm interested in tech and finance, which is why I'm so passionate about Skillsphere. I enjoy participating in competitions, challenging myself, and volunteering within the community. In my free time, I volunteer at various locations and enjoy hosting fundraisers for a good cause.</div>
+          <div class="member-bio">Hello! My name is Vishnu Mysore, and I am a senior at Appoquinimink. At SkillSphere, I serve as a Curriculum Developer, where I design workshop content focused on teaching practical skills in coding, finance, and problem solving. I am passionate about making learning engaging and applicable to real world situations. In my free time, I enjoy programming, playing soccer, and exploring new technologies.</div>
         </article>
 
         <article class="member-card">
           <div class="photo-rail">
             <div class="photo-badge">
-              <img src="https://www.gravatar.com/avatar/?d=mp&s=320" alt="Sri Vayuvegula" />
+              <img src="../images/team/sri-vayuvegula-400.webp"
+                   srcset="../images/team/sri-vayuvegula-400.webp 400w, ../images/team/sri-vayuvegula-800.webp 800w"
+                   sizes="128px" width="128" height="128" loading="lazy"
+                   alt="Sri Vayuvegula" />
             </div>
           </div>
           <div class="member-name">Sri Vayuvegula</div>
           <div class="member-role">Workshop Coordinator</div>
           <div class="member-divider"></div>
-          <div class="member-bio">Hi! My name is Sri Vayuvegula, and I am a freshman at Charter School of Wilmington. I am involved in BPA, FTC Robotics, and nonprofit organizations like SkillSphere, Helios Care Foundation, and CureQuest. I am also a varsity volleyball player and enjoy cricket, pickleball, and listening to music. I am passionate about using technology to create innovative solutions that positively impact communities, and in the future, I hope to become a robotics engineer!</div>
+          <div class="member-bio">Hi! My name is Sri Vayuvegula, and I am a sophomore at Charter School of Wilmington. I am involved in BPA, FTC Robotics, and nonprofit organizations like SkillSphere, Helios Care Foundation, and CureQuest. I am also a varsity volleyball player and enjoy cricket, pickleball, and listening to music. I am passionate about using technology to create innovative solutions that positively impact communities, and in the future, I hope to become a robotics engineer!</div>
         </article>
+
       </section>
+
 
       <!-- Former members -->
       <section class="former-wrap">
         <div class="former-title">Former Members</div>
-        <div class="former-grid single-center">
+        <div class="former-grid">
           <div class="former-card">
             <div class="former-name">John Atluri</div>
             <div class="former-role">Former Social Media Manager</div>
+          </div>
+          <div class="former-card">
+            <div class="former-name">Nirmal Praveen</div>
+            <div class="former-role">Former Technical Director</div>
+          </div>
+          <div class="former-card">
+            <div class="former-name">Rayya Karim</div>
+            <div class="former-role">Former Secretary</div>
+          </div>
+          <div class="former-card">
+            <div class="former-name">Ketaki Paranjape</div>
+            <div class="former-role">Former Outreach Coordinator</div>
+          </div>
+          <div class="former-card">
+            <div class="former-name">Aneesh Danduri</div>
+            <div class="former-role">Former Social Media Manager</div>
+          </div>
+          <div class="former-card">
+            <div class="former-name">Saivikas Gudipati</div>
+            <div class="former-role">Former Fundraising Coordinator</div>
           </div>
         </div>
       </section>
