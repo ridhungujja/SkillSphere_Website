@@ -1116,21 +1116,6 @@ ul {
   margin-bottom: 10px;
 }
 
-.drive-progress-bar {
-  height: 8px;
-  background: var(--neutral-100);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.drive-progress-fill {
-  height: 100%;
-  width: 0%;
-  background: var(--primary-500);
-  border-radius: var(--radius-full);
-  transition: width 1.5s ease;
-}
-
 /* ============================================
    WORKSHOPS
    ============================================ */
@@ -1664,6 +1649,19 @@ ul {
   justify-content: space-between;
   align-items: center;
   font-size: 0.82rem;
+}
+
+/* Legal disclosure block: 501(c)(3) status + EIN. Sits as the single flex
+   child of .footer-bottom so the copyright line stacks under the disclosure
+   instead of being pushed to the opposite edge by space-between. */
+.footer-legal p {
+  max-width: 68ch;
+  line-height: 1.7;
+}
+
+.footer-legal p + p {
+  margin-top: 12px;
+  color: var(--neutral-500);
 }
 
 .footer-bottom a {

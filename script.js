@@ -164,18 +164,6 @@ window.addEventListener('scroll', () => {
     });
   }
 
-  /* ---- SUPPLY DRIVE PROGRESS BAR ---- */
-  const progressFill = document.querySelector('.drive-progress-fill');
-  if (progressFill) {
-    new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          progressFill.style.width = '25%';
-        }
-      });
-    }, { threshold: 0.5 }).observe(progressFill);
-  }
-
   /* ---- BACK TO TOP ---- */
   const backToTop = document.getElementById('back-to-top');
   window.addEventListener('scroll', () => {
