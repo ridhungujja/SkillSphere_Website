@@ -7,6 +7,9 @@
   <title>Donate — SkillSphere</title>
   <meta name="description" content="Support SkillSphere's free student-led workshops, statewide school supply drive, and chapter expansion." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="icon" href="../images/logo.png" />
 
@@ -27,9 +30,8 @@
       grid-template-columns: 1fr 1fr;
       background: #fff;
       border: 1px solid var(--neutral-200);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow-lg);
     }
 
     .donate-featured-image {
@@ -60,7 +62,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 7px 14px;
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-pill);
       margin-bottom: 18px;
     }
 
@@ -113,9 +115,8 @@
       align-items: center;
       background: #fff;
       border: 1px solid var(--neutral-200);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius);
       padding: 42px;
-      box-shadow: var(--shadow-md);
     }
 
     .payment-title {
@@ -137,7 +138,7 @@
     .qr-box {
       background: var(--bg-secondary);
       border: 1px solid var(--neutral-200);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius);
       padding: 18px;
       text-align: center;
     }
@@ -165,14 +166,13 @@
     .amount-card {
       background: #fff;
       border: 1px solid var(--neutral-200);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius);
       padding: 28px;
-      transition: var(--transition-base);
+      transition: var(--transition);
     }
 
     .amount-card:hover {
       border-color: var(--primary-300);
-      box-shadow: var(--shadow-md);
       transform: translateY(-2px);
     }
 
@@ -203,21 +203,20 @@
     .way-card {
       background: #fff;
       border: 1px solid var(--neutral-200);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius);
       padding: 28px;
-      transition: var(--transition-base);
+      transition: var(--transition);
     }
 
     .way-card:hover {
       border-color: var(--primary-300);
-      box-shadow: var(--shadow-md);
       transform: translateY(-2px);
     }
 
     .way-icon {
       width: 48px;
       height: 48px;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius);
       background: var(--primary-50);
       color: var(--primary-600);
       display: flex;
@@ -256,9 +255,8 @@
       margin: 0 auto;
       background: #fff;
       border: 1px solid var(--neutral-200);
-      border-radius: var(--radius-xl);
+      border-radius: var(--radius);
       padding: 42px;
-      box-shadow: var(--shadow-md);
     }
 
     .transparency-list {
@@ -328,6 +326,8 @@
 </head>
 
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
   <!-- NAVBAR -->
   <nav class="navbar scrolled no-hero" id="navbar">
     <div class="container">
@@ -350,6 +350,8 @@
       </div>
     </div>
   </nav>
+
+  <main id="main">
 
   <!-- HERO -->
   <section class="donate-hero">
@@ -613,6 +615,9 @@
     </div>
   </section>
 
+
+
+  </main>
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">

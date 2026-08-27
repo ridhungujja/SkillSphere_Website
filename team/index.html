@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meet the Team — SkillSphere</title>
   <meta name="description" content="Meet the students behind SkillSphere — a student-founded nonprofit building the next generation of leaders." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="icon" href="../images/logo.png" />
 
@@ -84,7 +87,7 @@
       box-shadow: var(--team-card-shadow);
       padding: 104px 28px 34px;
       text-align: center;
-      transition: var(--transition-base);
+      transition: var(--transition);
     }
 
     .member-card:hover {
@@ -222,7 +225,7 @@
       box-shadow: var(--team-card-shadow);
       padding: 36px 18px;
       text-align: center;
-      transition: var(--transition-base);
+      transition: var(--transition);
       position: relative;
       min-height: 128px;
       display: flex;
@@ -297,6 +300,8 @@
   </style>
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="container">
@@ -330,7 +335,7 @@
   </header>
 
   <!-- TEAM -->
-  <main class="team-wrap">
+  <main id="main" class="team-wrap">
     <div class="container">
       <section class="team-grid">
 
