@@ -23,46 +23,15 @@
     }
 
     /* ===== Hero ===== */
-    .team-hero {
-      position: relative;
-      padding: 152px 0 104px;
-      background: #0a1628;
-      overflow: hidden;
-    }
-    .team-hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(180deg, rgba(2,6,23,0.58) 0%, rgba(2,6,23,0.80) 100%),
-        url("https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&cs=tinysrgb&w=1800&h=1000&fit=crop");
-      background-size: cover;
-      background-position: center;
-      transform: scale(1.02);
-      filter: saturate(1.05) contrast(1.02);
-    }
-    .team-hero .container {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-    .team-hero-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(2.7rem, 5vw, 3.7rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      color: #fff;
-      margin-bottom: 14px;
-    }
-    .team-hero-desc {
-      max-width: 860px;
-      margin: 0 auto;
-      color: rgba(255,255,255,0.76);
-      font-size: 1.06rem;
-      line-height: 1.9;
-    }
 
     /* ===== Main wrap ===== */
+    .team-head { padding: calc(var(--space-9) + var(--space-3)) 0 var(--space-6); background: var(--bg-primary); }
+    .team-head__grid { display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-7); align-items: center; }
+    .team-head__title { font-size: var(--fs-700); line-height: var(--lh-tight); margin-bottom: var(--space-4); color: var(--neutral-900); }
+    .team-head__desc { max-width: var(--measure); color: var(--text-secondary); }
+    .team-head__img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--neutral-200); }
+    @media (max-width: 1024px) { .team-head__grid { grid-template-columns: 1fr; gap: var(--space-5); } }
+
     .team-wrap {
       background: #ffffff;
       padding: 96px 0 120px;
@@ -303,34 +272,42 @@
 
   <a class="skip-link" href="#main">Skip to content</a>
   <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar scrolled no-hero" id="navbar" aria-label="Primary">
     <div class="container">
-      <a href="../index.html" class="nav-logo">
+      <a href="../index.html" class="nav-logo" aria-label="SkillSphere Foundation home">
         <img src="../images/logo.png" alt="SkillSphere logo" />
         SkillSphere
       </a>
       <div class="nav-links" id="nav-links">
-        <a href="../index.html">Home</a>
         <a href="../programs/">Programs</a>
-        <a href="../team/">Meet the Team</a>
+        <a aria-current="page" href="../team/">Team</a>
         <a href="../news/">News</a>
         <a href="../contact/">Contact</a>
         <a href="../donate/" class="nav-cta">Donate</a>
       </div>
-      <div class="nav-toggle" id="nav-toggle">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="team-hero">
-    <div class="team-hero-bg"></div>
-    <div class="container">
-      <h1 class="team-hero-title">Meet the Team</h1>
-      <p class="team-hero-desc">
-        SkillSphere is built and run by students. The people below are the reason our workshops happen, our supply drive operates, and our chapter model is ready to grow.
-      </p>
+  <!-- TEAM HEADER -->
+  <header class="team-head">
+    <div class="container team-head__grid">
+      <div>
+        <p class="eyebrow">Team</p>
+        <h1 class="team-head__title">Twelve students, two states</h1>
+        <p class="team-head__desc">
+          SkillSphere is run entirely by students. The officers and members below plan the
+          workshops, run the supply drive, and write the BPA materials, across schools in
+          Delaware and Pennsylvania.
+        </p>
+      </div>
+      <img class="team-head__img"
+           src="../images/photos/team-event-1200.webp"
+           srcset="../images/photos/team-event-800.webp 800w, ../images/photos/team-event-1200.webp 1200w"
+           sizes="(min-width: 1024px) 40vw, 100vw" width="1200" height="900"
+           alt="Five SkillSphere team members wearing name badges at an evening event." />
     </div>
   </header>
 
@@ -567,7 +544,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="../index.html" class="nav-logo">
+          <a href="../index.html" class="nav-logo" aria-label="SkillSphere Foundation home">
             <img src="../images/logo.png" alt="SkillSphere" />
             SkillSphere
           </a>
@@ -590,9 +567,8 @@
 
         <div class="footer-col">
           <h4>Pages</h4>
-          <a href="../index.html">Home</a>
           <a href="../programs/">Programs</a>
-          <a href="../team/">Meet the Team</a>
+          <a href="../team/">Team</a>
           <a href="../news/">News</a>
           <a href="../contact/">Contact</a>
           <a href="../donate/">Donate</a>

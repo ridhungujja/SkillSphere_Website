@@ -18,28 +18,27 @@
   <!-- NAVBAR -->
   <nav class="navbar scrolled no-hero" id="navbar">
     <div class="container">
-      <a href="../index.html" class="nav-logo">
+      <a href="../index.html" class="nav-logo" aria-label="SkillSphere Foundation home">
         <img src="../images/logo.png" alt="SkillSphere logo" />
         SkillSphere
       </a>
       <div class="nav-links" id="nav-links">
-        <a href="../index.html">Home</a>
         <a href="../programs/">Programs</a>
-        <a href="../team/">Meet the Team</a>
-        <a href="../news/">News</a>
+        <a href="../team/">Team</a>
+        <a aria-current="page" href="../news/">News</a>
         <a href="../contact/">Contact</a>
         <a href="../donate/" class="nav-cta">Donate</a>
       </div>
-      <div class="nav-toggle" id="nav-toggle">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </nav>
 
   <main id="main">
 
   <!-- HERO -->
-  <section class="section" style="background:var(--bg-secondary);padding:160px 0 80px;">
+  <section class="section page-hero">
     <div class="container">
       <div class="section-header">
         <span class="section-label">News & Updates</span>
@@ -54,26 +53,27 @@
   <!-- FEATURED ANNOUNCEMENT -->
   <section class="section" style="padding-top:0;">
     <div class="container">
-      <div style="background:#fff;border:1px solid var(--neutral-200);border-radius:var(--radius);overflow:hidden;">
-        <img src="../images/supply-drive-banner.jpg" alt="SkillSphere School Supply Drive" style="width:100%;height:auto;display:block;">
-        
-        <div style="padding:48px 40px;">
-          <span style="background:#ff6600;color:#fff;font-size:0.8rem;font-weight:600;padding:6px 14px;border-radius:999px;">FUNDRAISER</span>
-          <h2 style="font-size:2.1rem;margin:20px 0 16px;line-height:1.2;">Support Our 2025 Statewide School Supply Drive</h2>
-          <p style="font-size:1.05rem;color:var(--text-secondary);line-height:1.75;max-width:700px;">
-            Every donation helps us provide essential school supplies to students in under-resourced communities across Delaware. 
-            We're currently in active collection phase and need your help to reach more students this year.
+      <article class="news-feature">
+        <img src="../images/photos/dover-secretary-marten-2-1200.webp"
+             srcset="../images/photos/dover-secretary-marten-2-800.webp 800w, ../images/photos/dover-secretary-marten-2-1200.webp 1200w"
+             sizes="(min-width: 1024px) 50vw, 100vw" width="1200" height="900"
+             alt="Delaware Secretary of Education Cindy Marten holding a supply kit with SkillSphere students at the Dover Middle School campus." />
+        <div class="news-feature__body">
+          <p class="eyebrow">August 24, 2026</p>
+          <h2>Supplies delivered in Dover, with the Secretary of Education</h2>
+          <p>
+            SkillSphere delivered packed supply kits to students at the Dover Middle School campus.
+            Delaware Secretary of Education Cindy Marten and Capital School District leadership joined
+            the team at the table. The kits represent over $3,300 in supplies collected across the summer
+            and went to students at Title I schools.
           </p>
-          
-          <div style="margin-top:32px;">
-            <a href="https://gofund.me/5f11f9b7e" target="_blank" class="btn btn-orange" style="font-size:1.05rem;padding:16px 36px;">
-              Donate Now on GoFundMe
-              <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
+          <p>
+            WBOC-TV and WMDT 47abc both covered the distribution.
+            <!-- TODO(ridhun): link the two articles here -->
+          </p>
+          <a href="https://gofund.me/5f11f9b7e" target="_blank" rel="noopener" class="btn btn-orange">Fund the next drive</a>
         </div>
-      </div>
-    </div>
+      </article>
   </section>
 
   <!-- RECENT UPDATES -->
@@ -88,7 +88,7 @@
         
         <div class="program-card">
           <div class="program-card-image">
-            <img src="https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Marketing Workshop" />
+            <img src="../images/photos/codeninjas-session-1200.webp" alt="Students at a SkillSphere marketing workshop at Code Ninjas." loading="lazy" />
             <span class="program-tag">Workshop</span>
           </div>
           <div class="program-card-body">
@@ -96,13 +96,13 @@
             <p class="program-card-desc">
               Students learned ethos, logos, and pathos and designed real product flyers in Canva. The feedback was incredible.
             </p>
-            <small style="color:var(--neutral-500);">March 2025</small>
+            <small class="card-date">March 2025</small>
           </div>
         </div>
 
         <div class="program-card">
           <div class="program-card-image">
-            <img src="https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Robotics Workshop" />
+            <img src="../images/photos/robotics-workshop-1200.webp" alt="A SkillSphere robotics workshop in progress at Code Ninjas." loading="lazy" />
             <span class="program-tag">Workshop</span>
           </div>
           <div class="program-card-body">
@@ -110,27 +110,27 @@
             <p class="program-card-desc">
               Middle school students built and programmed real driving robots using LEGO SPIKE kits. Huge success!
             </p>
-            <small style="color:var(--neutral-500);">February 2025</small>
+            <small class="card-date">February 2025</small>
           </div>
         </div>
 
         <div class="program-card">
           <div class="program-card-image">
-            <img src="../images/supply-drive-banner.jpg" alt="Supply Drive" />
+            <img src="../images/photos/supply-kits-long-table-899.webp" alt="Packed supply kits laid out along a long table." loading="lazy" />
             <span class="program-tag">Community</span>
           </div>
           <div class="program-card-body">
-            <h3 class="program-card-title">2025 School Supply Drive is Live</h3>
+            <h3 class="program-card-title">School Supply Drive: $3,300 delivered</h3>
             <p class="program-card-desc">
-              We're collecting supplies across Delaware to support Title I schools. Help us reach our goal!
+              A summer of collection boxes and two restaurant fundraiser nights ended with kits delivered to 10 Title I schools in August 2026.
             </p>
-            <small style="color:var(--neutral-500);">January 2025</small>
+            <small class="card-date">August 2026</small>
           </div>
         </div>
 
         <div class="program-card">
           <div class="program-card-image">
-            <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop" alt="Chapter Expansion" />
+            <img src="../images/photos/student-group-1200.webp" alt="A group of students after a SkillSphere workshop." loading="lazy" />
             <span class="program-tag">Announcement</span>
           </div>
           <div class="program-card-body">
@@ -138,7 +138,7 @@
             <p class="program-card-desc">
               Students at any school can now start their own SkillSphere chapter. Apply today!
             </p>
-            <small style="color:var(--neutral-500);">January 2025</small>
+            <small class="card-date">January 2025</small>
           </div>
         </div>
 
@@ -148,8 +148,6 @@
 
   <!-- CTA -->
   <section class="cta-section">
-    <div class="hero-orb hero-orb--1"></div>
-    <div class="hero-orb hero-orb--2"></div>
     <div class="container">
       <div class="cta-content">
         <h2 class="cta-title">Want to Stay Updated?</h2>
@@ -173,7 +171,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="../index.html" class="nav-logo">
+          <a href="../index.html" class="nav-logo" aria-label="SkillSphere Foundation home">
             <img src="../images/logo.png" alt="SkillSphere" />
             SkillSphere
           </a>
@@ -188,9 +186,8 @@
 
         <div class="footer-col">
           <h4>Pages</h4>
-          <a href="../index.html">Home</a>
           <a href="../programs/">Programs</a>
-          <a href="../team/">Meet the Team</a>
+          <a href="../team/">Team</a>
           <a href="../news/">News</a>
           <a href="../contact/">Contact</a>
           <a href="../donate/">Donate</a>
