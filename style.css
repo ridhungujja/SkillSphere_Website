@@ -1448,3 +1448,5 @@ body.nav-open { overflow: hidden; }
   .team-grid { grid-template-columns: 1fr; }
   .former-card { width: 100%; }
 }
+.form-notice { padding: var(--space-3) var(--space-4); margin-bottom: var(--space-4); border: 1px solid var(--success-400); border-radius: var(--radius-sm); background: var(--neutral-50); color: var(--neutral-800); }
+.chapter-cta__note a { color: var(--primary-600); text-decoration: underline; text-underline-offset: 2px; }

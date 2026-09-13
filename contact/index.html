@@ -61,11 +61,12 @@
   <section class="section">
     <div class="container contact-grid">
 
-      <div class="contact-card">
+      <div class="contact-card" id="contact-form">
         <h2>Send a message</h2>
         <p class="contact-card__sub">Pick a topic so it reaches the right person.</p>
+        <p id="form-notice" class="form-notice" role="status" tabindex="-1" hidden>Message sent. We will reply by email.</p>
 
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <form name="contact" method="POST" action="/contact/?sent=1" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact" />
           <p class="visually-hidden">
             <label>Don’t fill this out: <input name="bot-field" /></label>
@@ -103,6 +104,7 @@
                 <option>Start a chapter</option>
                 <option>Partner with us</option>
                 <option>Host a donation box</option>
+                <option>Donate or sponsor</option>
                 <option>Media or press</option>
                 <option>Other</option>
               </select>
@@ -173,12 +175,13 @@
       </div>
 
       <div class="chapter-cta">
-        <a href="mailto:skillsphereintl@gmail.com?subject=Chapter%20Interest" class="btn btn-orange btn--wide">
-          Email us about starting a chapter
+        <a href="#contact-form" data-topic="chapter" class="btn btn-orange btn--wide">
+          Message us about a chapter
         </a>
         <!-- TODO(ridhun): replace with a real chapter interest form when one exists. -->
         <p class="chapter-cta__note">
           Tell us your school and grade, and we will send you the chapter guide.
+          Or email <a href="mailto:skillsphereintl@gmail.com?subject=Chapter%20Interest">skillsphereintl@gmail.com</a>.
         </p>
       </div>
     </div>
@@ -216,7 +219,7 @@
           <a href="../programs/">Workshops</a>
           <a href="../programs/">School Supply Drive</a>
           <a href="../programs/">BPA study materials</a>
-          <a href="../contact/">Start a chapter</a>
+          <a href="../contact/?topic=chapter">Start a chapter</a>
         </div>
 
         <div class="footer-col">
@@ -230,8 +233,8 @@
         <div class="footer-col">
           <h2 class="footer-heading">Get involved</h2>
           <a href="../donate/">Donate</a>
-          <a href="../contact/">Join the team</a>
-          <a href="../contact/">Partner with us</a>
+          <a href="../contact/?topic=join">Join the team</a>
+          <a href="../contact/?topic=partner">Partner with us</a>
           <a href="../contact/">Contact</a>
           <a href="tel:+13024078436">(302) 407-8436</a>
         </div>

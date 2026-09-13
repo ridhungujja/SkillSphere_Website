@@ -62,27 +62,26 @@
     $$('[data-reveal]').forEach((el) => el.classList.add('is-in'));
   }
   
-  const track = $('#testimonials-track');
-  const prev = $('#testimonial-prev'), next = $('#testimonial-next');
-  if (track && prev && next) {
-    const cards = $$('.testimonial-card', track);
-    let i = 0;
-    const step = () => cards[0].offsetWidth + parseFloat(getComputedStyle(track).gap || 0);
-    const visible = () => Math.max(1, Math.floor(track.parentElement.offsetWidth / step()));
-    const go = (n) => {
-      const max = Math.max(0, cards.length - visible());
-      i = (n + max + 1) % (max + 1);
-      track.style.transform = `translateX(-${i * step()}px)`;
+  const form = $('form[name="contact"]');
+  if (form) {
+    const TOPICS = {
+      join: 'Join SkillSphere', chapter: 'Start a chapter', partner: 'Partner with us',
+      box: 'Host a donation box', donate: 'Donate or sponsor', press: 'Media or press', other: 'Other',
     };
-    next.addEventListener('click', () => go(i + 1));
-    prev.addEventListener('click', () => go(i - 1));
-    track.parentElement.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') go(i + 1);
-      if (e.key === 'ArrowLeft') go(i - 1);
-    });
-    addEventListener('resize', () => go(i), { passive: true });
+    const topic = $('#topic', form);
+    const pick = (key) => { if (topic && TOPICS[key]) topic.value = TOPICS[key]; };
+    const params = new URLSearchParams(location.search);
+    pick(params.get('topic'));
+    if (params.get('sent') === '1') {
+      const notice = $('#form-notice');
+      if (notice) { notice.hidden = false; notice.focus(); }
+    }
+    $$('[data-topic]').forEach((a) => a.addEventListener('click', () => {
+      pick(a.dataset.topic);
+      setTimeout(() => $('#name', form)?.focus(), 0);
+    }));
   }
-  
+
   const btt = $('#back-to-top');
   if (btt) {
     addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 600), { passive: true });
