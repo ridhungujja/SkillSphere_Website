@@ -1260,3 +1260,11 @@ body.nav-open { overflow: hidden; }
   .footer { background: #fff; color: #000; border-top: 1px solid #000; }
   .footer-col a, .footer-brand p, .footer-legal, .footer-heading, .footer-contact a, .nav-logo { color: #000; }
 }
+
+/* Partner logo wall: one card per partner, logos scaled to a shared height,
+   greyscale at rest and full colour on hover so ten brands read as one row. */
+.partner-logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-3); }
+.partner-logos li { display: flex; align-items: center; justify-content: center; min-height: 112px; padding: var(--space-4); border: 1px solid var(--neutral-200); border-radius: var(--radius); background: var(--bg-primary); }
+.partner-logos img { max-height: 56px; max-width: 150px; width: auto; height: auto; filter: grayscale(1); opacity: 0.8; transition: filter var(--transition), opacity var(--transition); }
+.partner-logos li:hover img, .partner-logos li:focus-within img { filter: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .partner-logos img { filter: none; opacity: 1; } }
