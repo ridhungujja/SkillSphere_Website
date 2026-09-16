@@ -832,6 +832,8 @@ ul {
 .press-label { font-size: var(--fs-100); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--neutral-500); margin: 0; }
 .press-list { display: flex; gap: var(--space-6); flex-wrap: wrap; }
 .press-list li { display: flex; align-items: baseline; gap: var(--space-2); }
+.press-link { display: inline-flex; align-items: baseline; gap: var(--space-2); color: inherit; border-radius: var(--radius-sm); }
+.press-link:hover .press-mark, .press-link:focus-visible .press-mark { text-decoration: underline; text-underline-offset: 3px; }
 .press-mark { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-300); color: var(--neutral-900); letter-spacing: -0.01em; }
 .press-mark small { font-size: var(--fs-100); font-weight: 600; color: var(--neutral-600); }
 .press-date { font-size: var(--fs-100); color: var(--neutral-500); }
@@ -898,23 +900,6 @@ ul {
 .story-facts li { font-size: var(--fs-100); color: var(--neutral-600); display: flex; flex-direction: column; gap: var(--space-1); }
 .story-facts strong { font-family: var(--font-display); font-size: var(--fs-400); color: var(--primary-600); line-height: 1; }
 
-/* ---- Partners: text wordmarks, no logos hotlinked ---- */
-.partner-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-3);
-}
-.partner-list li {
-  padding: var(--space-4);
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--radius);
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--fs-300);
-  color: var(--neutral-800);
-  text-align: center;
-  line-height: var(--lh-snug);
-}
 
 /* ---- Get involved: dark band, three doors ---- */
 .involve { background: var(--primary-800); color: #fff; }
@@ -1260,3 +1245,17 @@ body.nav-open { overflow: hidden; }
   .footer { background: #fff; color: #000; border-top: 1px solid #000; }
   .footer-col a, .footer-brand p, .footer-legal, .footer-heading, .footer-contact a, .nav-logo { color: #000; }
 }
+
+/* Partner logo wall: one card per partner, logos scaled to a shared height,
+   greyscale at rest and full colour on hover so ten brands read as one row. */
+.partner-logos { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-3); }
+@media (max-width: 1024px) { .partner-logos { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+@media (max-width: 560px) { .partner-logos { grid-template-columns: repeat(2, 1fr); } .partner-logos li { min-height: 96px; padding: var(--space-3); } }
+.partner-logos li { display: flex; align-items: center; justify-content: center; min-height: 112px; padding: var(--space-4); border: 1px solid var(--neutral-200); border-radius: var(--radius); background: var(--bg-primary); }
+.partner-logos img { max-height: 56px; max-width: min(150px, 100%); width: auto; height: auto; filter: grayscale(1); opacity: 0.8; transition: filter var(--transition), opacity var(--transition); }
+.partner-logos li:hover img, .partner-logos li:focus-within img { filter: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .partner-logos img { filter: none; opacity: 1; } }
+
+/* Inline links inside running text */
+.story-body p a, .news-feature__body p a, .update__body p a, .recognition a { color: var(--primary-600); text-decoration: underline; text-underline-offset: 2px; }
+.story-body p a:hover, .news-feature__body p a:hover, .update__body p a:hover, .recognition a:hover { color: var(--primary-800); }
