@@ -33,6 +33,7 @@ sitemap.xml robots.txt  keep the sitemap in step with the pages
 - **News**: `news/index.html`, one `<article class="update">` per entry, newest first.
 - **Documents**: drop the PDF in `documents/`, then add it to the transparency page and to the Documents column of the footer on every page.
 - **Footer**: duplicated on every page. Change it once, then copy to the others.
+- **CSS/JS caching**: left at Netlify's default (revalidate every load) on purpose. There is no build step to fingerprint filenames, so a long cache would serve stale styles after every edit.
 
 ## Open items
 
