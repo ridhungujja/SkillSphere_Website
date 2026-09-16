@@ -82,19 +82,19 @@
     }));
   }
 
-  // Press belt: drifts left, eases to a stop while hovered or focused, eases back when left.
+  // Press belt: drifts left; while hovered or focused it winds down to a slow crawl, never a full stop.
   const belt = $('.press-strip');
   const track = belt && $('.press-track', belt);
   if (track && !reduce) {
-    const CRUISE = 55; // px per second
+    const CRUISE = 55, CRAWL = 8; // px per second
     let x = 0, speed = CRUISE, target = CRUISE, last = performance.now();
-    belt.addEventListener('mouseenter', () => { target = 0; });
+    belt.addEventListener('mouseenter', () => { target = CRAWL; });
     belt.addEventListener('mouseleave', () => { target = CRUISE; });
-    belt.addEventListener('focusin', () => { target = 0; });
+    belt.addEventListener('focusin', () => { target = CRAWL; });
     belt.addEventListener('focusout', () => { target = CRUISE; });
     const tick = (now) => {
       const dt = Math.min((now - last) / 1000, 0.05); last = now;
-      speed += (target - speed) * Math.min(1, dt * 7);
+      speed += (target - speed) * Math.min(1, dt * 2.2);
       x -= speed * dt;
       const loop = track.scrollWidth / 2;
       if (x <= -loop) x += loop;
