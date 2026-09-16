@@ -836,9 +836,7 @@ ul {
 .press-mark { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-300); color: var(--neutral-900); letter-spacing: -0.01em; }
 .press-mark small { font-size: var(--fs-100); font-weight: 600; color: var(--neutral-600); }
 @media (prefers-reduced-motion: no-preference) {
-  .press-track { animation: press-scroll 60s linear infinite; }
-  .press-strip.is-paused .press-track, .press-strip:focus-within .press-track { animation-play-state: paused; }
-  @keyframes press-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .press-track { will-change: transform; }
 }
 @media (prefers-reduced-motion: reduce) {
   .press-strip { -webkit-mask-image: none; mask-image: none; }

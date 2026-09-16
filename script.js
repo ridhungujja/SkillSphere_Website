@@ -82,12 +82,26 @@
     }));
   }
 
-  // Press belt: keep rolling under a passing cursor; pause only after it settles for a second.
+  // Press belt: drifts left, eases to a stop while hovered or focused, eases back when left.
   const belt = $('.press-strip');
-  if (belt) {
-    let hold;
-    belt.addEventListener('mouseenter', () => { hold = setTimeout(() => belt.classList.add('is-paused'), 1000); });
-    belt.addEventListener('mouseleave', () => { clearTimeout(hold); belt.classList.remove('is-paused'); });
+  const track = belt && $('.press-track', belt);
+  if (track && !reduce) {
+    const CRUISE = 55; // px per second
+    let x = 0, speed = CRUISE, target = CRUISE, last = performance.now();
+    belt.addEventListener('mouseenter', () => { target = 0; });
+    belt.addEventListener('mouseleave', () => { target = CRUISE; });
+    belt.addEventListener('focusin', () => { target = 0; });
+    belt.addEventListener('focusout', () => { target = CRUISE; });
+    const tick = (now) => {
+      const dt = Math.min((now - last) / 1000, 0.05); last = now;
+      speed += (target - speed) * Math.min(1, dt * 7);
+      x -= speed * dt;
+      const loop = track.scrollWidth / 2;
+      if (x <= -loop) x += loop;
+      track.style.transform = `translate3d(${x.toFixed(2)}px, 0, 0)`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   const btt = $('#back-to-top');
