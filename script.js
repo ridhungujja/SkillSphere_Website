@@ -82,6 +82,14 @@
     }));
   }
 
+  // Press belt: keep rolling under a passing cursor; pause only after it settles for a second.
+  const belt = $('.press-strip');
+  if (belt) {
+    let hold;
+    belt.addEventListener('mouseenter', () => { hold = setTimeout(() => belt.classList.add('is-paused'), 1000); });
+    belt.addEventListener('mouseleave', () => { clearTimeout(hold); belt.classList.remove('is-paused'); });
+  }
+
   const btt = $('#back-to-top');
   if (btt) {
     addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 600), { passive: true });

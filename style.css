@@ -837,7 +837,7 @@ ul {
 .press-mark small { font-size: var(--fs-100); font-weight: 600; color: var(--neutral-600); }
 @media (prefers-reduced-motion: no-preference) {
   .press-track { animation: press-scroll 60s linear infinite; }
-  .press-strip:hover .press-track, .press-strip:focus-within .press-track { animation-play-state: paused; }
+  .press-strip.is-paused .press-track, .press-strip:focus-within .press-track { animation-play-state: paused; }
   @keyframes press-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 }
 @media (prefers-reduced-motion: reduce) {
